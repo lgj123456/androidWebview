@@ -2,6 +2,7 @@ package com.example.yhdj.webview0221;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -42,5 +43,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         mWebView.loadUrl("http://www.baidu.com");
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            if(mWebView.canGoBack()){
+                mWebView.goBack();
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
